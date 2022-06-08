@@ -32,6 +32,8 @@ class PostController extends Controller
     /*
     Endpoint que se encarga de despachar la información 
     al cliente
+
+    PostRequest se encarga de validar los datos ingresados
     */
     public function show(PostRequest $request)
     {
@@ -52,6 +54,14 @@ class PostController extends Controller
         /* Se valida que se haya ingresado una búsqueda correcta*/
         if ($city != NULL || ($lat != NULL && $lon != NULL))
         {
+
+            /*Si se proporciona la ciudad no contemplar latitud y longitud*/
+            if ($city != NULL)
+            {
+                $lat = NULL;
+                $lon = NULL;
+            }
+
             /* Se invoca el metodo para obtener la temperatura actual*/
             $response = $this->_get_temperature_api($city, $lat, $lon);
 
