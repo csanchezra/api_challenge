@@ -43,8 +43,6 @@ class SpotifyHelper
     {
         $authorization = "Authorization: Bearer " . $this->clientToken;
 
-        // $genreMusic = 'rock';
-
         $spotifyURL = $this->urlSpotify . 'search?q=genre:' . urlencode($this->genreMusic) . '&type=track&offset=0&limit=10';
 
         $ch2 = curl_init();
